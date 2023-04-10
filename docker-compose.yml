@@ -1,0 +1,17 @@
+---
+version: "3"
+services:
+  go-myapps-app-prometheus-exporter:
+    image: rschulte/go-myapps-app-opentalk:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - VERSION=dev2
+    restart: always
+    ports:
+      - 3000:3000
+      - 3001:3001
+    command: |
+      -loglevel trace     
+      -staticdir /data/static/
